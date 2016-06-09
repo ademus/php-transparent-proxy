@@ -13,6 +13,7 @@
   * if you are sure your requests are made correctly and
   * your urls are valid.
   *
+   * ademus 9 june 2016 - make => all Content-type works 
   */
 
 
@@ -62,13 +63,7 @@ $method = $_SERVER['REQUEST_METHOD'];
        
     curl_close($ch);
 
-//    header('Content-Type: application/json');
    $headers =  get_headers($url);
-  // $headers = headers_list();
-
-   // header("Content-type: text/html");
-   
-  // get the content type header
    
   foreach($headers as $header){
 //      echo"<br>===";      print_r($header);     echo"<br>";
@@ -76,7 +71,9 @@ $method = $_SERVER['REQUEST_METHOD'];
 	     $content_type = substr($header, 14);
 	    header("Content-Type: ".trim($content_type));
 	     
-	   /*  $ar_head  = explode(";", trim($content_type, 2));
+	   /*  
+	     // old code, can be deleted
+	     $ar_head  = explode(";", trim($content_type, 2));
 	     $charset = "";
 	    if(isset($ar_head[1])) $charset = $ar_head[1];
 	    $contentType = $ar_head[0];
@@ -89,7 +86,7 @@ $method = $_SERVER['REQUEST_METHOD'];
          }
   }
     
-   // header('Content-Type: image/jpeg');
+
     echo $result;
   }
   else {
